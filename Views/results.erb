@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html>
+
+<% if defined?(params) %>
+<% arr = Calculate_credit.new(params["sum"].to_i, params["percent"].to_i, params["term"].to_i,
+                              params["payOff"]).calc_credit %>
+<% end %>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <title>Результат</title>
+</head>
+
+<body>
+<div>
+  <table>
+    <tr>
+      <td>
+        <p><%= "Процентна ставка: #{params["percent"]}" %><br/>
+          <%= "Сума кредиту: #{params["sum"]}" %>
+          <Currency></Currency>
+        </p>
+
+        <table class="table table-striped table-bordered table-condensed">
+          <tr>
+            <th>місяць #</th>
+            <th>погашення кредиту</th>
+            <th>погашення %</th>
+            <th>загальний внесок</th>
+            <th>залишок кредиту</th>
+          </tr>
+
+          <% arr.each do |el| %>
+          <%= "<tr>
+            <td>#{el[:month]}</td>
+            <td>#{el[:loan_body]}</td>
+            <td>#{el[:percent_sum]}</td>
+            <td>#{el[:total_sum]}</td>
+            <td>#{el[:rest_sum]}</td>
+          </tr>" %>
+          <% end %>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

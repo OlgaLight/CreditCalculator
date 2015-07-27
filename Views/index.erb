@@ -1,0 +1,60 @@
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+
+<body>
+<h1><%= @title%></h1>
+
+<form action="/results" method="post">
+  <tr width="100%" cellpadding="5" cellspacing="0">
+    <tbody>
+
+  <tr>
+    <td width="35%"><b>Loan parameters:</b></td>
+    <td width="65%">&nbsp;</td>
+  </tr>
+
+  <br><br>
+
+  <tr>
+    <td><label for="percent">Percent rate (%):</label></td>
+    <td><input type="text" id="percent" name="percent" required="true" value="" size="3">
+      <br><br>
+    </td>
+  </tr>
+
+  <tr>
+    <td><label for="credit">Loan amount:</label></td>
+    <td><input type="text" id="sum" name="sum" required="true" value="" size="10"></td>
+  </tr>
+
+  <br><br>
+
+  <tr>
+    <td><label>Method of repayment:</label></td>
+    <br>
+    <td>
+      <input type="radio" name="payOff" required="true" value="usual" checked>Standard<br>
+      <input type="radio" name="payOff" required="true" value="equal">Annuity (equal installments)
+    </td>
+  </tr>
+
+  <br><br>
+
+  <tr>
+    <td><label for="term">Loan term (months):</label></td>
+    <td><input type="text" id="term" name="term" required="true" value="" size="5"><br><br></td>
+  </tr>
+
+  <tr>
+    <td><b>Payment schedule:</b></td>
+  </tr>
+  </table>
+
+  <input type="submit">
+</form>
+</body>
+
+</html>
